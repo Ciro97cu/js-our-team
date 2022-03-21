@@ -17,51 +17,61 @@ const arrayMember = [
 
     {
         pic: "img/walter-gordon-office-manager.jpg",
-        nameMember: "Wayne Barnett",
+        nameMember: "1",
         role: "Founder & CEO"
     },
     {
         pic: "img/angela-caroll-chief-editor.jpg",
-        nameMember: "Angela Caroll",
+        nameMember: "2",
         role: "Designer"
     },
     {
         pic: "img/angela-lopez-social-media-manager.jpg",
-        nameMember: "Angela Lopez",
+        nameMember: "3",
         role: "Developer"
     },
     {
         pic: "img/barbara-ramos-graphic-designer.jpg",
-        nameMember: "Barbara Ramos",
+        nameMember: "4",
         role: "Junior Developer"
     },
     {
         pic: "img/scott-estrada-developer.jpg",
-        nameMember: "Scott Estrada",
+        nameMember: "5",
         role: "Nullafacente"
     },
     {
         pic: "img/walter-gordon-office-manager.jpg",
-        nameMember: "Walter Gordon",
+        nameMember: "6",
         role: "Addetto alle fotocopie"
     }
 
 ]
 
-const card = document.querySelector(".team-card");
+const teamContainerSelector = document.querySelector(".team-container");
+const teamCardSelector = document.querySelector(".team-card");
+const cardImageSelector = document.querySelector(".card-image");
+const cardTextSelector = document.querySelector(".card-text");
+const titleSelector = document.querySelector("h3");
 
-const container = document.querySelector(".team-container");
+const teamCard = document.createElement("div");
+teamCard.classList.add("team-card");
+const cardImage = document.createElement("div");
+cardImage.classList.add("card-image");
+const image = document.createElement("img");
+const cardText = document.createElement("div");
+cardText.classList.add("card-text");
+const titleH3 = document.createElement("h3");
+const paragraph = document.createElement("p");
 
-const nameMember = document.querySelector(".card-text > h3");
+teamContainerSelector.appendChild(teamCard);
+teamCardSelector.appendChild(cardImage);
+teamCardSelector.appendChild(cardText);
+cardImageSelector.appendChild(image);
+cardTextSelector.appendChild(titleH3);
+cardTextSelector.appendChild(paragraph);
 
-const role = document.querySelector(".card-text > p");
+titleSelector.innerText = "Ciro";
 
-nameMember.innerText = arrayMember[0]["nameMember"];
-
-for (let i = 1; i < 6; i++) {
-    let clone = card.cloneNode(true);
-    container.appendChild(clone);
-    nameMember.innerText = arrayMember[i]["nameMember"];
-}
 
 
