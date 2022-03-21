@@ -108,7 +108,7 @@ document.getElementById("addMemberButton").addEventListener("click",
         arrayMember.push(newCard);
         console.log(arrayMember);
 
-        displayOnScreen(arrayMember);
+        displayOnScreen();
 
     }
 )
