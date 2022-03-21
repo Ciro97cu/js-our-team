@@ -102,14 +102,12 @@ let image;
 sempre tramite un'altra funzione vado a dare contenuto */
 for (let i = 0; i < arrayMember.length; i++) {
     creationElement();
-    let nameTeam = arrayMember[i];
-    let nameToDisplay = nameTeam.nameMember;
 
-    let roleTeam = arrayMember[i];
-    let roleToDisplay = roleTeam.role;
+    let cardIndex = arrayMember[i];
+    let nameToDisplay = cardIndex.nameMember;
+    let roleToDisplay = cardIndex.role;
+    let picToDisplay = cardIndex.pic;
 
-    let picTeam = arrayMember[i];
-    let picToDisplay = picTeam.pic;
     displayOnScreen(nameToDisplay, roleToDisplay, picToDisplay);
 }
 
