@@ -13,6 +13,8 @@ nuovi membri del team: cliccando sul pulsante "add" viene creato un *nuovo ogget
 il quale viene *inserito nell'array iniziale* e viene stampata una nuova card con tutte
 le informazioni inserite dall'utente. */
 
+// ~~~~~~~~~~ START FUNCTIONS ~~~~~~~~~~
+// funzione per mostrare a schermo immagine nome e ruolo
 function displayOnScreen(array, titleH3, paragraph, image) {
     let nameTeam = array;
     let nameToDisplay = nameTeam.nameMember;
@@ -29,8 +31,32 @@ function displayOnScreen(array, titleH3, paragraph, image) {
     image.src = picToDisplay;
 }
 
+// funzione per creare il contenitore teamCard
+function creationElement() {
 
+    const teamCard = document.createElement("div");
+    teamCard.classList.add("team-card");
+    const cardImage = document.createElement("div");
+    cardImage.classList.add("card-image");
+    image = document.createElement("img");
+    const cardText = document.createElement("div");
+    cardText.classList.add("card-text");
+    titleH3 = document.createElement("h3");
+    paragraph = document.createElement("p");
 
+    teamContainerSelector.appendChild(teamCard);
+    teamCard.appendChild(cardImage);
+    teamCard.appendChild(cardText);
+
+    cardImage.appendChild(image);
+
+    cardText.appendChild(titleH3);
+    cardText.appendChild(paragraph);
+
+}
+// ~~~~~~~~~~ END FUNCTIONS ~~~~~~~~~~
+
+// array di oggetti
 const arrayMember = [
 
     {
@@ -66,41 +92,30 @@ const arrayMember = [
 
 ]
 
+// variabile dell'elemento con classe team-container
 const teamContainerSelector = document.querySelector(".team-container");
+// input nome
 const inputName = document.getElementById("name");
+// input ruolo
 const inputRole = document.getElementById("role");
+// input immagine
 const inputImage = document.getElementById("image");
 
+// elemento nome
 let titleH3;
+// elemento ruolo
 let paragraph;
+// elemento immagine
 let image;
 
-
+/* ciclo andando a creare gli elementi tramite la funzione e
+sempre tramite un'altra funzione vado a dare contenuto */
 for (let i = 0; i < arrayMember.length; i++) {
-
-    const teamCard = document.createElement("div");
-    teamCard.classList.add("team-card");
-    const cardImage = document.createElement("div");
-    cardImage.classList.add("card-image");
-    image = document.createElement("img");
-    const cardText = document.createElement("div");
-    cardText.classList.add("card-text");
-    titleH3 = document.createElement("h3");
-    paragraph = document.createElement("p");
-
-    teamContainerSelector.appendChild(teamCard);
-    teamCard.appendChild(cardImage);
-    teamCard.appendChild(cardText);
-
-    cardImage.appendChild(image);
-
-    cardText.appendChild(titleH3);
-    cardText.appendChild(paragraph);
-
+    creationElement();
     displayOnScreen(arrayMember[i], titleH3, paragraph, image);
-
 }
 
+// aggiunta di una card al click
 document.getElementById("addMemberButton").addEventListener("click",
     () => {
         const newCard = {
@@ -111,7 +126,15 @@ document.getElementById("addMemberButton").addEventListener("click",
         arrayMember.push(newCard);
         console.log(arrayMember);
 
-        displayOnScreen(arrayMember[6], titleH3, paragraph, image);
+        creationElement();
+
+        let nameToDisplay = newCard.nameMember;
+        let roleToDisplay = newCard.role;
+        let picToDisplay = newCard.pic;
+
+        titleH3.innerText = nameToDisplay;
+        paragraph.innerText = roleToDisplay;
+        image.src = picToDisplay;
 
     }
 )
