@@ -56,14 +56,12 @@ const nameMember = document.querySelector(".card-text > h3");
 
 const role = document.querySelector(".card-text > p");
 
-for (let i = 0; i < 5; i++) {
+nameMember.innerText = arrayMember[0]["nameMember"];
+
+for (let i = 1; i < 6; i++) {
     let clone = card.cloneNode(true);
     container.appendChild(clone);
     nameMember.innerText = arrayMember[i]["nameMember"];
 }
-
-
-
-
 
 
