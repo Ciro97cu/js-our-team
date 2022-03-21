@@ -71,6 +71,9 @@ const inputName = document.getElementById("name");
 const inputRole = document.getElementById("role");
 const inputImage = document.getElementById("image");
 
+let titleH3;
+let paragraph;
+let image;
 
 
 for (let i = 0; i < arrayMember.length; i++) {
@@ -79,11 +82,11 @@ for (let i = 0; i < arrayMember.length; i++) {
     teamCard.classList.add("team-card");
     const cardImage = document.createElement("div");
     cardImage.classList.add("card-image");
-    const image = document.createElement("img");
+    image = document.createElement("img");
     const cardText = document.createElement("div");
     cardText.classList.add("card-text");
-    const titleH3 = document.createElement("h3");
-    const paragraph = document.createElement("p");
+    titleH3 = document.createElement("h3");
+    paragraph = document.createElement("p");
 
     teamContainerSelector.appendChild(teamCard);
     teamCard.appendChild(cardImage);
@@ -108,7 +111,7 @@ document.getElementById("addMemberButton").addEventListener("click",
         arrayMember.push(newCard);
         console.log(arrayMember);
 
-        displayOnScreen();
+        displayOnScreen(arrayMember[6], titleH3, paragraph, image);
 
     }
 )
