@@ -16,62 +16,75 @@ le informazioni inserite dall'utente. */
 const arrayMember = [
 
     {
-        pic: "img/walter-gordon-office-manager.jpg",
-        nameMember: "1",
+        pic: "img/wayne-barnett-founder-ceo.jpg",
+        nameMember: "Wayne Barnett",
         role: "Founder & CEO"
     },
     {
         pic: "img/angela-caroll-chief-editor.jpg",
-        nameMember: "2",
-        role: "Designer"
+        nameMember: "Angela Caroll",
+        role: "Chief Editor"
+    },
+    {
+        pic: "img/walter-gordon-office-manager.jpg",
+        nameMember: "Walter Gordon",
+        role: "Office Manager"
     },
     {
         pic: "img/angela-lopez-social-media-manager.jpg",
-        nameMember: "3",
+        nameMember: "Angela Lopez",
+        role: "Social Media Manager"
+    },
+    {
+        pic: "img/scott-estrada-developer.jpg",
+        nameMember: "Scott Estrada",
         role: "Developer"
     },
     {
         pic: "img/barbara-ramos-graphic-designer.jpg",
-        nameMember: "4",
-        role: "Junior Developer"
-    },
-    {
-        pic: "img/scott-estrada-developer.jpg",
-        nameMember: "5",
-        role: "Nullafacente"
-    },
-    {
-        pic: "img/walter-gordon-office-manager.jpg",
-        nameMember: "6",
-        role: "Addetto alle fotocopie"
+        nameMember: "Barbara Ramos",
+        role: "Graphic Designer"
     }
 
 ]
 
 const teamContainerSelector = document.querySelector(".team-container");
-const teamCardSelector = document.querySelector(".team-card");
-const cardImageSelector = document.querySelector(".card-image");
-const cardTextSelector = document.querySelector(".card-text");
-const titleSelector = document.querySelector("h3");
-
-const teamCard = document.createElement("div");
-teamCard.classList.add("team-card");
-const cardImage = document.createElement("div");
-cardImage.classList.add("card-image");
-const image = document.createElement("img");
-const cardText = document.createElement("div");
-cardText.classList.add("card-text");
-const titleH3 = document.createElement("h3");
-const paragraph = document.createElement("p");
-
-teamContainerSelector.appendChild(teamCard);
-teamCardSelector.appendChild(cardImage);
-teamCardSelector.appendChild(cardText);
-cardImageSelector.appendChild(image);
-cardTextSelector.appendChild(titleH3);
-cardTextSelector.appendChild(paragraph);
-
-titleSelector.innerText = "Ciro";
 
 
 
+for (let i = 0; i < arrayMember.length; i++) {
+
+    const teamCard = document.createElement("div");
+    teamCard.classList.add("team-card");
+    const cardImage = document.createElement("div");
+    cardImage.classList.add("card-image");
+    const image = document.createElement("img");
+    const cardText = document.createElement("div");
+    cardText.classList.add("card-text");
+    const titleH3 = document.createElement("h3");
+    const paragraph = document.createElement("p");
+
+    teamContainerSelector.appendChild(teamCard);
+    teamCard.appendChild(cardImage);
+    teamCard.appendChild(cardText);
+
+    cardImage.appendChild(image);
+
+    cardText.appendChild(titleH3);
+    cardText.appendChild(paragraph);
+
+    let nameTeam = arrayMember[i];
+    let nameToDisplay = nameTeam.nameMember;
+
+    let roleTeam = arrayMember[i];
+    let roleToDisplay = roleTeam.role;
+
+    let picTeam = arrayMember[i];
+    let picToDisplay = picTeam.pic;
+
+
+    titleH3.innerText = nameToDisplay;
+    paragraph.innerText = roleToDisplay;
+    image.src = picToDisplay;
+
+}
