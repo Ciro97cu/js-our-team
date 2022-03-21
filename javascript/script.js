@@ -15,20 +15,10 @@ le informazioni inserite dall'utente. */
 
 // ~~~~~~~~~~ START FUNCTIONS ~~~~~~~~~~
 // funzione per mostrare a schermo immagine nome e ruolo
-function displayOnScreen(array, titleH3, paragraph, image) {
-    let nameTeam = array;
-    let nameToDisplay = nameTeam.nameMember;
-
-    let roleTeam = array;
-    let roleToDisplay = roleTeam.role;
-
-    let picTeam = array;
-    let picToDisplay = picTeam.pic;
-
-
-    titleH3.innerText = nameToDisplay;
-    paragraph.innerText = roleToDisplay;
-    image.src = picToDisplay;
+function displayOnScreen(names, role, img) {
+    titleH3.innerText = names;
+    paragraph.innerText = role;
+    image.src = img;
 }
 
 // funzione per creare il contenitore teamCard
@@ -112,7 +102,15 @@ let image;
 sempre tramite un'altra funzione vado a dare contenuto */
 for (let i = 0; i < arrayMember.length; i++) {
     creationElement();
-    displayOnScreen(arrayMember[i], titleH3, paragraph, image);
+    let nameTeam = arrayMember[i];
+    let nameToDisplay = nameTeam.nameMember;
+
+    let roleTeam = arrayMember[i];
+    let roleToDisplay = roleTeam.role;
+
+    let picTeam = arrayMember[i];
+    let picToDisplay = picTeam.pic;
+    displayOnScreen(nameToDisplay, roleToDisplay, picToDisplay);
 }
 
 // aggiunta di una card al click
@@ -124,17 +122,10 @@ document.getElementById("addMemberButton").addEventListener("click",
             role: inputRole.value
         }
         arrayMember.push(newCard);
-        console.log(arrayMember);
 
         creationElement();
 
-        let nameToDisplay = newCard.nameMember;
-        let roleToDisplay = newCard.role;
-        let picToDisplay = newCard.pic;
-
-        titleH3.innerText = nameToDisplay;
-        paragraph.innerText = roleToDisplay;
-        image.src = picToDisplay;
+        displayOnScreen(newCard.nameMember, newCard.role, newCard.pic);
 
     }
 )
