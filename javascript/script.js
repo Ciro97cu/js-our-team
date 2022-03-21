@@ -13,6 +13,24 @@ nuovi membri del team: cliccando sul pulsante "add" viene creato un *nuovo ogget
 il quale viene *inserito nell'array iniziale* e viene stampata una nuova card con tutte
 le informazioni inserite dall'utente. */
 
+function displayOnScreen(array, titleH3, paragraph, image) {
+    let nameTeam = array;
+    let nameToDisplay = nameTeam.nameMember;
+
+    let roleTeam = array;
+    let roleToDisplay = roleTeam.role;
+
+    let picTeam = array;
+    let picToDisplay = picTeam.pic;
+
+
+    titleH3.innerText = nameToDisplay;
+    paragraph.innerText = roleToDisplay;
+    image.src = picToDisplay;
+}
+
+
+
 const arrayMember = [
 
     {
@@ -44,11 +62,14 @@ const arrayMember = [
         pic: "img/barbara-ramos-graphic-designer.jpg",
         nameMember: "Barbara Ramos",
         role: "Graphic Designer"
-    }
+    },
 
 ]
 
 const teamContainerSelector = document.querySelector(".team-container");
+const inputName = document.getElementById("name");
+const inputRole = document.getElementById("role");
+const inputImage = document.getElementById("image");
 
 
 
@@ -73,18 +94,21 @@ for (let i = 0; i < arrayMember.length; i++) {
     cardText.appendChild(titleH3);
     cardText.appendChild(paragraph);
 
-    let nameTeam = arrayMember[i];
-    let nameToDisplay = nameTeam.nameMember;
-
-    let roleTeam = arrayMember[i];
-    let roleToDisplay = roleTeam.role;
-
-    let picTeam = arrayMember[i];
-    let picToDisplay = picTeam.pic;
-
-
-    titleH3.innerText = nameToDisplay;
-    paragraph.innerText = roleToDisplay;
-    image.src = picToDisplay;
+    displayOnScreen(arrayMember[i], titleH3, paragraph, image);
 
 }
+
+document.getElementById("addMemberButton").addEventListener("click",
+    () => {
+        const newCard = {
+            pic: inputImage.value,
+            nameMember: inputName.value,
+            role: inputRole.value
+        }
+        arrayMember.push(newCard);
+        console.log(arrayMember);
+
+        displayOnScreen(arrayMember);
+
+    }
+)
